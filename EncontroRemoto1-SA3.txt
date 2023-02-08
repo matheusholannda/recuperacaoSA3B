@@ -1,0 +1,24 @@
+-- Criar base de dados
+CREATE DATABASE	CriptoRec
+
+-- Usar nossa base de dados
+USE CriptoRec
+
+-- Criar tabela
+CREATE TABLE Usuarios(
+	IdUsuario INT PRIMARY KEY IDENTITY,
+	Email VARCHAR(100) UNIQUE NOT NULL,
+	Senha VARCHAR(50) NOT NULL
+)
+
+-- Inserir valores na tabela Usuarios
+INSERT INTO Usuarios
+VALUES 
+	('emailusuario1@a.com', '123123'),
+	('emailusuario2@b.com', '321321')
+
+-- Seleção dos valores inseridos
+SELECT * FROM Usuarios
+
+-- Seleção do Email e da Senha, porém com a Senha criptografada
+SELECT Email, Senha, HASHBYTES('MD5', Senha) AS SenhaCripto FROM Usuarios
